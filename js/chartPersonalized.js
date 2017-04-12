@@ -1,3 +1,9 @@
+function cadreGlobal(context) {
+  context.strokeRect(0, 0, 640, 540);
+  context.font = "12pt Calibri,Geneva,Arial";
+  context.fillStyle = "#000";
+}
+
 function cadre(context) {
   context.strokeRect(20, 10, 600, 500);
   context.font = "12pt Calibri,Geneva,Arial";
@@ -7,7 +13,6 @@ function cadre(context) {
 function indicateurGauche(context) {
   var xIndicatorLeft = 0;
   var yIndicatorLeft = 0;
-  context.lineWidth = -2;
   for (note=0;note<11;note++){
     xIndicatorLeft = 3;
     yIndicatorLeft = 516-(note*50);
@@ -22,6 +27,7 @@ function indicateurGauche(context) {
       context.moveTo(xIndicatorLeft+18,yIndicatorLeft-5);
       context.lineTo(xIndicatorLeft+620,yIndicatorLeft-5);
       context.stroke();
+      context.lineWidth = "1";
     }
   }
 }
@@ -39,9 +45,20 @@ function indicateurBas(context,monthNumber) {
   }
 }
 
+function placerPoint(context, month, note) {
+  context.beginPath();
+  context.arc(43+(month*50), 511-(note*50), 5, 0, Math.PI * 2);
+  context.fill();
+}
+
 var canvas  = document.querySelector('#canvas');
 var context = canvas.getContext('2d');
 
 cadre(context);
 indicateurGauche(context);
 indicateurBas(context,10);
+//cadreGlobal(context);
+var note=[5,8,7,5,6,9,5,1,4,2,3,6]
+for(var i=0; i<12;i++) {
+  placerPoint(context,i,note[i]);
+}

@@ -1,10 +1,15 @@
 <html>
-  <head>
-  </head>
-  <body>
-    <canvas id="canvas" width="640" height="540">
-      <p>Désolé, votre navigateur ne supporte pas Canvas. Mettez-vous à jour</p>
-    </canvas>
-    <script src="js/chartPersonalized.js"></script>
-  </body>
+	<head>
+		<script src="js/amcharts/amcharts.js"></script>
+		<script src="js/amcharts/serial.js"></script>
+		<script src="js/amcharts/plugins/export/export.min.js"></script>
+		<link rel="stylesheet" href="js/amcharts/plugins/export/export.css" type="text/css" media="all" />
+		<script src="js/amcharts/themes/light.js"></script>
+		<script src="js/chartSlide.js"></script>
+		<link rel="stylesheet" href="css/style.css" type="text/css" media="all" />
+	</head>
+	<body>
+		<div id="chartdiv"></div>
+		<div id="resultat">Cliquer sur une note dans le graphe</div>
+	</body>
 </html>

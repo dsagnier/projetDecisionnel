@@ -5,11 +5,20 @@
 		<script src="js/amcharts/plugins/export/export.min.js"></script>
 		<link rel="stylesheet" href="js/amcharts/plugins/export/export.css" type="text/css" media="all" />
 		<script src="js/amcharts/themes/light.js"></script>
+		<script src="js/jquery-3.2.1.min.js"></script>
 		<script src="js/chartSlide.js"></script>
 		<link rel="stylesheet" href="css/style.css" type="text/css" media="all" />
+		<link href="css/bootstrap.min.css" rel="stylesheet">
 	</head>
 	<body>
-		<div id="chartdiv"></div>
-		<div id="resultat">Cliquer sur une note dans le graphe</div>
+		<div class="col-md-5" id="chartdiv"></div>
+		<div class="col-md-7" id="resultat">
+			Cliquer sur une note dans le graphe
+		</div>
+		<button type="button" onclick="scrollLine()">Click</button>
+		<form>
+			<label for="weight">Weight</label>
+			<input type="range" orient="vertical" id="weight" min="0" value="5" max="10" step="1">
+		</form>
 	</body>
 </html>

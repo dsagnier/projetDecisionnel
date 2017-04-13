@@ -41,6 +41,17 @@ function handleClick(event) {
     document.getElementById("resultat").innerHTML = event.item.category + " : " + event.item.values.value;
 }
 
+function scrollLine() {
+  //change value of line in guide
+  var valueAxes = new AmCharts.ValueAxis();
+  var guides = new AmCharts.Guide;
+  guides.value = 9;
+  valueAxes.addGuide(guides);
+  chart.addValueAxis(valueAxes);
+  chart.validateNow();
+  chart.write("chartdiv");
+}
+
 AmCharts.ready(function() {
   chart = new AmCharts.AmSerialChart();
   chart.dataProvider = chartData;
@@ -84,4 +95,23 @@ AmCharts.ready(function() {
   chart.addValueAxis(valueAxes);
 
   chart.write("chartdiv");
+});
+
+$(function() {
+  $('#weight').on('input', function() {
+
+  });
+
+  $.getJSON('opinion_keyWord.json',function(data){
+    $("#resultat").empty();
+    $("#resultat").append('<div class="col-md-6">Mots cles positifs : </div><div class="col-md-6">Avis : </div>');
+    $.each(data,function(index,d){
+      var key;
+      $.each(d.listeKeyP,function(index,dk){
+        key = dk.key + '<br/>';
+      });
+      $('#resultat').append('<div class="col-md-6">' + key + '</div>');
+      $('#resultat').append('<div class="col-md-6">' + d.opinion + '</div>');
+    });
+  });
 });
